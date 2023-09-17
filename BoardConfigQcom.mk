@@ -190,33 +190,33 @@ else
     QCOM_HARDWARE_VARIANT := $(TARGET_BOARD_PLATFORM)
 endif
 
-# Allow a device to opt-out hardset of PRODUCT_SOONG_NAMESPACES
+# Allow a device to opt-out hardset of NO_PRODUCT_SOONG_NAMESPACES
 QCOM_SOONG_NAMESPACE ?= hardware/qcom-caf/$(QCOM_HARDWARE_VARIANT)
-PRODUCT_SOONG_NAMESPACES += $(QCOM_SOONG_NAMESPACE)
+NO_PRODUCT_SOONG_NAMESPACES += $(QCOM_SOONG_NAMESPACE)
 
-# Add display-commonsys to PRODUCT_SOONG_NAMESPACES for QSSI supported platforms
+# Add display-commonsys to NO_PRODUCT_SOONG_NAMESPACES for QSSI supported platforms
 ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
-PRODUCT_SOONG_NAMESPACES += \
+NO_PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/commonsys/display \
     vendor/qcom/opensource/commonsys-intf/display
 
 ifeq ($(filter $(UM_5_10_FAMILY) $(UM_5_15_FAMILY),$(TARGET_BOARD_PLATFORM)),)
-PRODUCT_SOONG_NAMESPACES += \
+NO_PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/display
 endif
 
 endif
 
-# Add data-ipa-cfg-mgr to PRODUCT_SOONG_NAMESPACES if needed
+# Add data-ipa-cfg-mgr to NO_PRODUCT_SOONG_NAMESPACES if needed
 ifneq ($(USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR),true)
     ifneq ($(filter $(LEGACY_UM_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
-        PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um
+        NO_PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um
     else
-        PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/data-ipa-cfg-mgr
+        NO_PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/data-ipa-cfg-mgr
     endif
 endif
 
-# Add dataservices to PRODUCT_SOONG_NAMESPACES if needed
+# Add dataservices to NO_PRODUCT_SOONG_NAMESPACES if needed
 ifneq ($(USE_DEVICE_SPECIFIC_DATASERVICES),true)
-    PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/dataservices
+    NO_PRODUCT_SOONG_NAMESPACES += vendor/qcom/opensource/dataservices
 endif
