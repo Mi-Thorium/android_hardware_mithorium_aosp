@@ -12,11 +12,6 @@ soong_config_module_type {
 
 gralloc_handle_custom_content_md_reserved_size {
     name: "gralloc_handle_has_custom_content_md_reserved_size_defaults",
-    soong_config_variables: {
-        gralloc_handle_has_custom_content_md_reserved_size: {
-            export_cflags: ["-DGRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE"],
-        },
-    },
 }
 
 soong_config_bool_variable {
@@ -33,9 +28,4 @@ soong_config_module_type {
 
 gralloc_handle_reserved_size {
     name: "gralloc_handle_has_reserved_size_defaults",
-    soong_config_variables: {
-        gralloc_handle_has_reserved_size: {
-            export_cflags: ["-DGRALLOC_HANDLE_HAS_RESERVED_SIZE"],
-        },
-    },
 }
