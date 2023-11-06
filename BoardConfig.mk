@@ -18,6 +18,8 @@ SOONG_CONFIG_lineageQcomVars += \
     qti_vibrator_use_effect_stream
 
 # Set default values
+TARGET_GRALLOC_HANDLE_HAS_CUSTOM_CONTENT_MD_RESERVED_SIZE ?= false
+TARGET_GRALLOC_HANDLE_HAS_RESERVED_SIZE ?= false
 TARGET_QTI_VIBRATOR_EFFECT_LIB ?= libqtivibratoreffect
 
 # Soong bool variables
